@@ -7,24 +7,20 @@ import {
   ContactBtnDelete,
 } from './ContactList.styled';
 
-class ContactList extends React.Component {
-  render() {
-    return (
-      <Contacts>
-        {this.props.data.map(contact => (
-          <Contact key={contact.id}>
-            <ContactName>{contact.name}:</ContactName>
-            <p>{contact.number}</p>
-            <ContactBtnDelete
-              onClick={() => this.props.contactRemoving(contact.id)}
-            >
-              Delete
-            </ContactBtnDelete>
-          </Contact>
-        ))}
-      </Contacts>
-    );
-  }
+function ContactList({ data, contactRemoving }) {
+  return (
+    <Contacts>
+      {data.map(contact => (
+        <Contact key={contact.id}>
+          <ContactName>{contact.name}:</ContactName>
+          <p>{contact.number}</p>
+          <ContactBtnDelete onClick={() => contactRemoving(contact.id)}>
+            Delete
+          </ContactBtnDelete>
+        </Contact>
+      ))}
+    </Contacts>
+  );
 }
 
 ContactList.propTypes = {
